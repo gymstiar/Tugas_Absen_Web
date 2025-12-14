@@ -94,6 +94,8 @@ php artisan key:generate
 # Run database migrations
 php artisan migrate
 
+php artisan migrate:fresh --seed
+
 # Create storage symlink
 php artisan storage:link
 
