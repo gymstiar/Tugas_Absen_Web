@@ -209,5 +209,6 @@ Contributions are welcome and appreciated!
 <div align="center">
 
 Made with ❤️ using **Laravel**
+Develope by gymstiar
 
 </div>
