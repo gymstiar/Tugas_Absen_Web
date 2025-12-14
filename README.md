@@ -96,6 +96,8 @@ php artisan migrate
 
 php artisan migrate:fresh --seed
 
+php artisan db:seed
+
 # Create storage symlink
 php artisan storage:link
 
