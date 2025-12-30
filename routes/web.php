@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Controllers
@@ -26,6 +27,29 @@ use App\Http\Controllers\Participant\TaskController as ParticipantTaskController
 |--------------------------------------------------------------------------
 */
 
+// Clear Cache Route (for hosting without terminal access)
+// Access via: https://yourdomain.com/clear-cache?key=YOUR_SECRET_KEY
+Route::get('/clear-cache', function () {
+    $secretKey = request('key');
+    
+    // Change this secret key to something unique!
+    if ($secretKey !== 'Gm8Ks3Lp7Nx2Qw4R') {
+        abort(404);
+    }
+    
+    // Clear all caches
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('route:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    
+    return response()->json([
+        'success' => true,
+        'message' => 'All caches cleared successfully!',
+        'cleared' => ['views', 'routes', 'config', 'cache']
+    ]);
+});
+
 Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
@@ -43,6 +67,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Secure File Routes (works on all hosting)
+Route::middleware('auth')->prefix('files')->name('files.')->group(function () {
+    // Task Documents
+    Route::get('/document/{document}/{action?}', [FileController::class, 'taskDocument'])->name('document');
+    
+    // Task Submissions
+    Route::get('/submission/{submission}/{action?}', [FileController::class, 'taskSubmission'])->name('submission');
+    
+    // Attendance Proofs
+    Route::get('/attendance-proof/{attendance}/{action?}', [FileController::class, 'attendanceProof'])->name('attendance-proof');
 });
 
 /*

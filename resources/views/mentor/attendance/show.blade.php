@@ -126,10 +126,10 @@
                              @if($record->proof_file_path)
                                 <div class="ms-5 mt-1">
                                     <div class="btn-group btn-group-sm" role="group">
-                                        <a href="{{ Storage::url($record->proof_file_path) }}" target="_blank" class="btn btn-outline-success">
+                                        <a href="{{ route('files.attendance-proof', $record) }}" target="_blank" class="btn btn-outline-success">
                                             <i class="bi bi-eye me-1"></i> View Proof
                                         </a>
-                                        <a href="{{ Storage::url($record->proof_file_path) }}" download class="btn btn-outline-primary">
+                                        <a href="{{ route('files.attendance-proof', ['attendance' => $record, 'action' => 'download']) }}" class="btn btn-outline-primary">
                                             <i class="bi bi-download me-1"></i> Download
                                         </a>
                                     </div>

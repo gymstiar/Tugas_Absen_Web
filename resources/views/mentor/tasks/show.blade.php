@@ -118,8 +118,8 @@
                             </div>
                         </div>
                         <div class="btn-group btn-group-sm">
-                             <a href="{{ Storage::url($doc->file_path) }}" target="_blank" class="btn btn-outline-primary">View</a>
-                             <a href="{{ Storage::url($doc->file_path) }}" download class="btn btn-outline-dark">Download</a>
+                             <a href="{{ route('files.document', $doc) }}" target="_blank" class="btn btn-outline-primary">View</a>
+                             <a href="{{ route('files.document', ['document' => $doc, 'action' => 'download']) }}" class="btn btn-outline-dark">Download</a>
                         </div>
                     </div>
                 @endforeach
@@ -177,10 +177,10 @@
                             
                              <div class="d-flex justify-content-between align-items-center mb-3">
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ Storage::url($submission->file_path) }}" target="_blank" class="btn btn-outline-primary">
+                                    <a href="{{ route('files.submission', $submission) }}" target="_blank" class="btn btn-outline-primary">
                                         <i class="bi bi-eye me-1"></i> View File
                                     </a>
-                                     <a href="{{ Storage::url($submission->file_path) }}" download class="btn btn-outline-dark">
+                                     <a href="{{ route('files.submission', ['submission' => $submission, 'action' => 'download']) }}" class="btn btn-outline-dark">
                                         <i class="bi bi-download me-1"></i> Download
                                     </a>
                                 </div>

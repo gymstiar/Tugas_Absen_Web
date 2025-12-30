@@ -50,7 +50,7 @@
                                             <div class="d-flex align-items-center overflow-hidden">
                                                 <div class="me-3 fs-5">{{ $doc->file_icon }}</div>
                                                 <div class="text-truncate">
-                                                    <a href="{{ Storage::url($doc->file_path) }}" target="_blank" class="fw-medium text-decoration-none text-dark">{{ $doc->file_name }}</a>
+                                                    <a href="{{ route('files.document', $doc) }}" target="_blank" class="fw-medium text-decoration-none text-dark">{{ $doc->file_name }}</a>
                                                     <div class="text-muted small">{{ $doc->human_file_size }}</div>
                                                 </div>
                                             </div>
