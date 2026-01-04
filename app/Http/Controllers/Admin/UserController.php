@@ -28,12 +28,18 @@ class UserController extends Controller
             $query->where('role', $request->role);
         }
 
+<<<<<<< HEAD
         $perPage = $request->input('per_page', 10);
         $perPage = in_array($perPage, [10, 20, 50, 100]) ? $perPage : 10;
         
         $users = $query->orderBy('created_at', 'desc')->paginate($perPage)->withQueryString();
 
         return view('admin.users.index', compact('users', 'perPage'));
+=======
+        $users = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('admin.users.index', compact('users'));
+>>>>>>> a57a2bef9c347d89cde0d37d93f095330f0d603c
     }
 
     public function create()

@@ -91,6 +91,7 @@ php artisan key:generate
 # DB_USERNAME=root
 # DB_PASSWORD=
 
+<<<<<<< HEAD
 # Run database migrations with seeder
 php artisan migrate:fresh --seed
 
@@ -98,6 +99,16 @@ php artisan migrate:fresh --seed
 # php artisan db:seed
 
 # Create storage symlink (skip if already exists)
+=======
+# Run database migrations
+php artisan migrate
+
+php artisan migrate:fresh --seed
+
+php artisan db:seed
+
+# Create storage symlink
+>>>>>>> a57a2bef9c347d89cde0d37d93f095330f0d603c
 php artisan storage:link
 
 # Build frontend assets

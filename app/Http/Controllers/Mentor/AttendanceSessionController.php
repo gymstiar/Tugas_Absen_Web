@@ -8,7 +8,10 @@ use App\Models\Attendance;
 use App\Models\ClassGroup;
 use App\Models\ActivityLog;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Pagination\LengthAwarePaginator;
+=======
+>>>>>>> a57a2bef9c347d89cde0d37d93f095330f0d603c
 use Carbon\Carbon;
 
 class AttendanceSessionController extends Controller
@@ -22,7 +25,11 @@ class AttendanceSessionController extends Controller
         
         if (!$class) {
             return view('mentor.attendance.index', [
+<<<<<<< HEAD
                 'sessions' => new LengthAwarePaginator([], 0, 10),
+=======
+                'sessions' => collect()->paginate(10),
+>>>>>>> a57a2bef9c347d89cde0d37d93f095330f0d603c
                 'class' => null,
             ]);
         }

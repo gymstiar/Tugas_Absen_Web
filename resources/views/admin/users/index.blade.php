@@ -117,6 +117,7 @@
     </div>
 
     <!-- Pagination -->
+<<<<<<< HEAD
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mt-4">
         <!-- Per Page Selector -->
         <div class="d-flex align-items-center gap-2">
@@ -184,4 +185,9 @@
         @endif
     </div>
 
+=======
+    <div class="mt-4">
+        {{ $users->links() }}
+    </div>
+>>>>>>> a57a2bef9c347d89cde0d37d93f095330f0d603c
 </x-app-layout>
